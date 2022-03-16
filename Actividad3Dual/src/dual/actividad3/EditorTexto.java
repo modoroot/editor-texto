@@ -5,8 +5,6 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.XMLEncoder;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -34,13 +32,11 @@ import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.text.StyleConstants;
-
 import java.awt.BorderLayout;
 
 /**
- * Clase donde se realizan los eventos del programa a partir de ActionListener y JFrame
- * y se crean sus componentes
+ * Clase donde se realiza el programa de Editor de texto entero con interfaz gráfica.
+ * Se usan interfaces como DocumentListener para actualizar in live
  * @author amna
  * @version 1.0
  */
@@ -167,6 +163,7 @@ public class EditorTexto extends JFrame implements ActionListener, DocumentListe
 		tab1 = new JTabbedPane();
 		tab2 = new JTabbedPane();
 		tab3 = new JTabbedPane();
+		//Se añade el método que activa a los botones para que funcionen
 		createDocButton.addActionListener(this);
 		openDocButton.addActionListener(this);
 		recentDocButton.addActionListener(this);
@@ -357,7 +354,6 @@ public class EditorTexto extends JFrame implements ActionListener, DocumentListe
 			int dialogAssistant = selectFile.showOpenDialog(null);
 			if(dialogAssistant == JFileChooser.APPROVE_OPTION) {
 				File fileOpen = new File(selectFile.getSelectedFile().getAbsolutePath());
-				File fileRecent = fileOpen;
 				Scanner fileIn = null;
 				try {
 					fileIn = new Scanner(fileOpen);
